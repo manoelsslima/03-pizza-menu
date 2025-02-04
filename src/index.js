@@ -7,7 +7,13 @@ function App() {
 }
 // root comes form the div's id in index.html file
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<App />);
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+  // React.StrictMode: render the components twice to find erros and check if we are using
+  // outdated parts of the React API
+);
 
 // React before 18
 // React.render(<App />);
