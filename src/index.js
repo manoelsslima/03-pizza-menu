@@ -71,14 +71,39 @@ function Header() {
   );
 }
 
+// to pass numbers as props, we need to enter js mode
 function Menu() {
   return (
     <main className="menu">
       <h2>Our menu</h2>
-      <Pizza />
-      <Pizza />
-      <Pizza />
+      <Pizza
+        name="Pizza salamino"
+        ingredients="Tomato, mozarella, and pepperoni"
+        photoName="pizzas/salamino.jpg"
+        price={10}
+      />
+
+      <Pizza
+        name="Pizza Funghi"
+        ingredients="Tomato, mushrooms, onion"
+        photoName="pizzas/funghi.jpg"
+        price={12}
+      />
     </main>
+  );
+}
+
+function Pizza(props) {
+  console.log(props);
+  return (
+    <div className="pizza">
+      <img src={props.photoName} alt={props.name} />
+      <div>
+        <h3>{props.name}</h3>
+        <p>{props.ingredients}</p>
+        <span>{props.price + 1}</span>
+      </div>
+    </div>
   );
 }
 
@@ -98,16 +123,6 @@ function Footer() {
     </footer>
   );
   // return React.createElement("footer", null, "We're currently open!");
-}
-
-function Pizza() {
-  return (
-    <div>
-      <img src="pizzas/salamino.jpg" alt="Pizza salamino" />
-      <h3>Pizza</h3>
-      <p>Tomato, mozarella, and pepperoni</p>
-    </div>
-  );
 }
 
 // root comes form the div's id in index.html file
