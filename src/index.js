@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import "./index.css";
 
 const pizzaData = [
   {
@@ -50,32 +51,51 @@ const pizzaData = [
 // must return an markup, only one!
 function App() {
   return (
-    <div>
+    <div className="container">
       <Header />
       <Menu />
       <Footer />
     </div>
   );
 }
-
+// to write css, we need to enter in js mode. To do so, we use {}. The CSS properties
+// are set using js objects, so we need another {}. The result is style={{cssProperty:value}}
+// <h1 style={{ color: "red", fontSize: "48px", textTransform: "uppercase" }}>Fast React Pizza Co.</h1>
 function Header() {
-  return <h1>Fast React Pizza Co.</h1>;
+  // const cssStyle = {color: "red", fontSize: "48px", textTransform: "uppercase"};
+  const cssStyle = {};
+  return (
+    <header className="header">
+      <h1 style={cssStyle}>Fast React Pizza Co.</h1>
+    </header>
+  );
 }
 
 function Menu() {
   return (
-    <div>
+    <main className="menu">
       <h2>Our menu</h2>
       <Pizza />
       <Pizza />
       <Pizza />
-    </div>
+    </main>
   );
 }
 
 function Footer() {
+  const hour = new Date().getHours();
+  const openHour = 12;
+  const closeHour = 22;
+  const isOpen = hour >= openHour && hour <= closeHour;
+  console.log(isOpen);
+  // strict mode renders the components twice
+  // if (hour >= openHour && hour <= closeHour) alert("We're currently open!");
+  // else alert("Sorry we're closed");
+
   return (
-    <footer>{new Date().toLocaleTimeString()} We're currently open</footer>
+    <footer className="footer">
+      {new Date().toLocaleTimeString()} We're currently open
+    </footer>
   );
   // return React.createElement("footer", null, "We're currently open!");
 }
@@ -84,7 +104,7 @@ function Pizza() {
   return (
     <div>
       <img src="pizzas/salamino.jpg" alt="Pizza salamino" />
-      <h2>Pizza</h2>
+      <h3>Pizza</h3>
       <p>Tomato, mozarella, and pepperoni</p>
     </div>
   );
