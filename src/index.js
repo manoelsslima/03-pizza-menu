@@ -90,7 +90,8 @@ function Menu() {
       {numPizzas > 0 ? (
         <>
           {/* React Fragment allow us to group withou leaving any trace in the DOM
-          so we avoid using <div />*/}
+          so we avoid using <div />. We can also use React.Fragment element
+          with a property called key.*/}
           <p>
             Authentic Italian cousine. 6 creative dishes to choose from. All
             from our stone oven, all organic, all delicious.
