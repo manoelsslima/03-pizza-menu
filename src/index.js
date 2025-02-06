@@ -127,14 +127,19 @@ function Pizza({ pizzaObj }) {
   // It's possible rendering with multiple returns but it should be the
   // hole component or return null to avoid exhibit the component or
   // return another component.
-  if (pizzaObj.soldOut) return null;
+  // if (pizzaObj.soldOut) return null;
+
   return (
-    <li className="pizza">
+    // using template literal to convert into javascript and use
+    // ternary operator. To use js code inside template literal
+    // we must use ${} e not only {}. We are going to use the
+    // ternary operator to add conditionally a CSS class.
+    <li className={`pizza ${pizzaObj.soldOut ? "sold-out" : ""}`}>
       <img src={pizzaObj.photoName} alt={pizzaObj.name} />
       <div>
         <h3>{pizzaObj.name}</h3>
         <p>{pizzaObj.ingredients}</p>
-        <span>{pizzaObj.price}</span>
+        <span>{pizzaObj.soldOut ? "SOLD OUT" : pizzaObj.price}</span>
       </div>
     </li>
   );
