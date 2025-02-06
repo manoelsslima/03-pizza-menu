@@ -83,13 +83,17 @@ function Menu() {
       we need to compare with the length of the array because
       the <ul /> element would be rendered even though there is no
       pizzas in array, because an empty array is truthy. In order to
-      avoid all that situation, we can use the ternary operator */}
-      {numPizzas > 0 && (
+      avoid all that situation, we can use the ternary operator.
+      We cannot use if/else statement because it doesn't produce a
+      value so it's not allowed in javascript mode. */}
+      {numPizzas > 0 ? (
         <ul className="pizzas">
           {pizzas.map((pizza) => (
             <Pizza pizzaObj={pizza} key={pizza.name} />
           ))}
         </ul>
+      ) : (
+        <p>We're still working on our menu. Please come back later. :)</p>
       )}
       {/* <Pizza
         name="Pizza salamino"
@@ -132,11 +136,15 @@ function Footer() {
 
   return (
     <footer className="footer">
-      {isOpen && (
+      {isOpen ? (
         <div className="order">
           <p>We're open until {closeHour}:00. Come visit us or order online.</p>
           <button className="btn">Order</button>
         </div>
+      ) : (
+        <p>
+          We're happy to welcome you between {openHour}:00 and {closeHour}:00.
+        </p>
       )}
     </footer>
   );
