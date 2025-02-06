@@ -79,6 +79,7 @@ function Menu() {
   return (
     <main className="menu">
       <h2>Our menu</h2>
+
       {/* show pizzas only if there is at least one pizza.
       we need to compare with the length of the array because
       the <ul /> element would be rendered even though there is no
@@ -87,11 +88,19 @@ function Menu() {
       We cannot use if/else statement because it doesn't produce a
       value so it's not allowed in javascript mode. */}
       {numPizzas > 0 ? (
-        <ul className="pizzas">
-          {pizzas.map((pizza) => (
-            <Pizza pizzaObj={pizza} key={pizza.name} />
-          ))}
-        </ul>
+        <>
+          {/* React Fragment allow us to group withou leaving any trace in the DOM
+          so we avoid using <div />*/}
+          <p>
+            Authentic Italian cousine. 6 creative dishes to choose from. All
+            from our stone oven, all organic, all delicious.
+          </p>
+          <ul className="pizzas">
+            {pizzas.map((pizza) => (
+              <Pizza pizzaObj={pizza} key={pizza.name} />
+            ))}
+          </ul>
+        </>
       ) : (
         <p>We're still working on our menu. Please come back later. :)</p>
       )}
