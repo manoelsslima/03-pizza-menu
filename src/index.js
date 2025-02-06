@@ -113,6 +113,10 @@ function Menu() {
 }
 
 function Pizza(props) {
+  // It's possible rendering with multiple returns but it should be the
+  // hole component or return null to avoid exhibit the component or
+  // return another component.
+  if (props.pizzaObj.soldOut) return null;
   return (
     <li className="pizza">
       <img src={props.pizzaObj.photoName} alt={props.name} />
